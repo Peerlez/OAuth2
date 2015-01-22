@@ -11,7 +11,8 @@ import javax.ws.rs.core.Response.Status;
 import com.peerlez.authorize.utils.CommonUtils;
 
 /**
- * Thrown to return a 400 Bad request JSON response with CacheControl headers.
+ * Thrown to return a HTTP status code 400 Bad request with JSON response 
+ * body with CacheControl headers.
  * 
  * @author A.Sillanpaa
  *
@@ -57,7 +58,7 @@ public class OauthBadRequestException extends WebApplicationException {
 	}
  
     /**
-	 * Constructs a OauthBadeRequestException with a list of errors
+	 * Constructs a OauthBadRequestException with a list of errors
 	 *
 	 * @param errors the list of errors
 	 *

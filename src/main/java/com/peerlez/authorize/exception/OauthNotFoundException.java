@@ -5,12 +5,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.apache.http.HttpHeaders;
-
 import com.peerlez.authorize.utils.CommonUtils;
 
 /**
- * Thrown to return a 404 Not Found JSON response with CacheControl headers.
+ * Thrown to return a HTTP status code 404 Not Found with JSON response body 
+ * with CacheControl headers.
  * 
  * @author A.Sillanpaa
  *

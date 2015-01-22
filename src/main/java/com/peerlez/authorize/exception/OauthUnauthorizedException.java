@@ -10,8 +10,8 @@ import com.peerlez.authorize.common.OAuthConstants;
 import com.peerlez.authorize.utils.CommonUtils;
 
 /**
- * Thrown to return a 401 Unauthorized with {@link HttpHeaders.WWW_AUTHENTICATE}
- * HTTP header and also with the Realm.
+ * Thrown to return a HTTP status code 401 Unauthorized with 
+ * {@link HttpHeaders.WWW_AUTHENTICATE} HTTP header and also with the Realm.
  * 
  * @author A.Sillanpaa
  *
