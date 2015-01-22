@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="CONTEXT_XML_REMOTE_ADDR_VALVE"/> -->
+	<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+		allow=".*" />
+		
+		
+
+</Context>
