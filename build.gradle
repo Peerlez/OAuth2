@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'jacoco'
+apply plugin: 'eclipse'
+
+description = 'OAuth2 Authorization Service Java REST implementation'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.apache.httpcomponents:httpcore:4.3.2'
+	compile 'org.apache.httpcomponents:httpclient:4.3.2'
+
+	compile 'com.fasterxml.jackson.core:jackson-core:2.4.+'
+	compile 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.4.+'
+	compile "org.glassfish.jersey.media:jersey-media-json-jackson:2.10.+"
+
+	compile 'org.jumpmind.symmetric.jdbc:postgresql:9.2-1002-jdbc4'
+	compile 'ch.qos.logback:logback-classic:1.1.2'
+
+	compile "org.glassfish.jersey.containers:jersey-container-servlet:2.10.1"
+	compile "org.glassfish.jersey.media:jersey-media-multipart:2.10.1"
+	compile "org.glassfish.jersey.media:jersey-media-json-jackson:2.10.1"
+	
+	testCompile 'junit:junit:4.+'
+}
