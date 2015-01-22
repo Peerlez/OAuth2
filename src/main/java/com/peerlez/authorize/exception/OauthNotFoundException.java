@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response.Status;
 import com.peerlez.authorize.utils.CommonUtils;
 
 /**
- * Thrown to return a HTTP status code 404 Not Found with JSON response body 
+ * Thrown to return a HTTP status code 404 Not Found with response body 
  * with CacheControl headers.
  * 
  * @author A.Sillanpaa
@@ -20,6 +20,7 @@ public class OauthNotFoundException extends WebApplicationException {
 
 	/**
 	 * Constructs new OauthNotFoundException with given response body/entity
+	 * in JSON
 	 * 
 	 * @param entity
 	 * 				response body/entity
