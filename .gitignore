@@ -1,0 +1,14 @@
+/build/
+/bin/
+.gradle/2.1/taskArtifacts/fileSnapshots.bin
+.settings/org.eclipse.jdt.core.prefs
+.gradle/2.1/taskArtifacts/cache.properties
+.gradle/2.1/taskArtifacts/cache.properties.lock
+.classpath
+.gradle/2.1/taskArtifacts/fileHashes.bin
+.gradle/2.1/taskArtifacts/taskArtifacts.bin
+.gradle/2.1/taskArtifacts/outputFileStates.bin
+.project
+.settings/gradle/org.springsource.ide.eclipse.gradle.core.import.prefs
+.settings/gradle/org.springsource.ide.eclipse.gradle.core.prefs
+.settings/gradle/org.springsource.ide.eclipse.gradle.refresh.prefs
