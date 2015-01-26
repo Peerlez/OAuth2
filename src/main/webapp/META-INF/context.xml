@@ -3,7 +3,19 @@
 	<!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="CONTEXT_XML_REMOTE_ADDR_VALVE"/> -->
 	<Valve className="org.apache.catalina.valves.RemoteAddrValve"
 		allow=".*" />
-		
-		
+	
+	<!-- write -->
+	<Resource name="jdbc/postgres/write" auth="Container"
+     type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+     url="jdbc:postgresql://127.0.0.1:5432/mydb"
+     username="myuser" password="mypasswd" maxActive="20" maxIdle="10" 
+     maxWait="-1"/>
+     
+     <!-- read -->
+     <Resource name="jdbc/postgres/read" auth="Container"
+     type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+     url="jdbc:postgresql://127.0.0.1:5432/mydb"
+     username="myuser" password="mypasswd" maxActive="20" maxIdle="10" 
+     maxWait="-1"/>
 
 </Context>
