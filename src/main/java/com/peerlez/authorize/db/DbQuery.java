@@ -93,11 +93,12 @@ public final class DbQuery {
 	private ResultSet executeCallable(String callable, SqlParameters[] param) 
 			throws SQLException {
 
-		for(int index = 0; index < param.length; index++) {
-	         SqlParameters params = param[index];
-	         Object value = params.getValue();
-	         statement.setObject(params.getIndex(), params.getValue());
-	    }
+		//TODO fix this!
+//		for(int index = 0; index < param.length; index++) {
+//	         SqlParameters params = param[index];
+//	         Object value = params.getValue();
+//	         statement.setObject(params.getIndex(), params.getValue());
+//	    }
 		
 		try {
 			_callStatement = constructStatement(callable);
