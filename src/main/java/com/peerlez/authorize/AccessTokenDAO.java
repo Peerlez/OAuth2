@@ -20,9 +20,9 @@ public class AccessTokenDAO {
 	private static final Logger LOG = LoggerFactory
 		.getLogger(AccessTokenDAO.class);
 
+	private final static String DB_CONN = "dbConnection";
 	private static AccessTokenDAO _instance;
 	private static ServletContext _servletContext;
-	private final static String DB_CONN = "dbConnection";
 	private static DbQuery _query;
 
 	private AccessTokenDAO(ServletContext servletContext) {
@@ -69,5 +69,29 @@ public class AccessTokenDAO {
 		LOG.info("Acccess Token {} deleted", accessToken);
 
 		return deleted;
+	}
+	
+	/**
+	 * Deletes all expired Access Tokens from DB.
+	 *
+	 * @return number 
+	 * 				of Access Tokens deleted
+	 *
+	 * @throws SQLException 
+	 * 				if any database-related error occurs
+	 */
+	public long deleteExpiredTokens() throws SQLException {
+		
+		ResultSet result = _query.initializeCallable("oauth.tokencleanup", 
+				true, null);
+
+		Long deletedCount = null;
+		while (result.next()) {
+	          deletedCount = result.getLong(1);
+		}
+
+		LOG.info("{} expired acccess tokens deleted", deletedCount);
+
+		return deletedCount;
 	}
 }
