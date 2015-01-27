@@ -54,8 +54,7 @@ public class Oauth {
 					OAuthErrorConstants.TOKEN_NEEDED));
 		}
 
-		AccessTokenDAO.instance(_servletContext)
-			.deleteAccessToken(accessToken);
+		AccessTokenDAO.instance(_servletContext).deleteAccessToken(accessToken);
 
 		return Response.ok().build();
 	}
