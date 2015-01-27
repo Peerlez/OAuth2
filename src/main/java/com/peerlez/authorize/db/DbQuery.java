@@ -103,13 +103,14 @@ public final class DbQuery {
 			_callStatement = constructStatement(callable);
 			_callStatement.execute();
 			_result = (ResultSet) _callStatement.getObject(0);
+			return _result;
 		} finally {
 			if (_callStatement != null) {
 				_callStatement.close();
 		    }
 			closeDbConnection();
+			_result.close();
 		}
-		return _result;
 	}
 	
 	/**
@@ -145,20 +146,6 @@ public final class DbQuery {
 		if (_connection == null || !_connection.isClosed()) {
 				_connection.close();
 				_connection = null;
-		}
-	}
-	
-	/**
-	 * Close the {@link ResultSet} and release object's database and JDBC
-	 * resources.
-	 * 
-	 * @throws SQLException
-	 * 				if a database access error occurs
-	 */
-	public final synchronized void closeResultSet() throws SQLException {
-
-		if (_result != null) {
-			_result.close();
 		}
 	}
 }
