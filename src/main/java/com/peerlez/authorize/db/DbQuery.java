@@ -57,18 +57,12 @@ public final class DbQuery {
 		
 		constructCallable.append("call ").append(storedProcedureName);
 
-		if (parameters == null) {
+		if (parameters == null || parameters.length == 0) {
 			constructCallable.append("() }");
 			return executeCallable(constructCallable.toString(), null);
 		}
 		
 		int length = parameters.length;
-
-		/* no parameters*/
-		if (length == 0) {
-			constructCallable.append("() }");
-			return executeCallable(constructCallable.toString(), null);
-		}
 		
 		constructCallable.append(" ( ").append("? ");
 
