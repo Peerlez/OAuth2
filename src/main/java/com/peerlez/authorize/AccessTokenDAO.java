@@ -18,6 +18,8 @@ import com.peerlez.authorize.resource.JwtAccessToken;
 import com.peerlez.authorize.resource.MacAccessToken;
 
 /**
+ * CRUD functions for AccessTokens.
+ * 
  * @author A.Sillanpaa
  *
  */
