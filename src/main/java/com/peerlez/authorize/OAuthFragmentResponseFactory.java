@@ -1,5 +1,7 @@
 package com.peerlez.authorize;
 
+import java.sql.Timestamp;
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
@@ -45,8 +47,8 @@ public final class OAuthFragmentResponseFactory {
 		StringBuilder url = new StringBuilder();
 		url.append("access_token=" + accessToken.getAccessToken());
 		url.append("&token_type=" + accessToken.getTokenType());
-		url.append("&expires_in="
-			+ getSecondsDeltaToNow(accessToken.getExpiresTime()));
+		url.append("&expires_in="+ getSecondsDeltaToNow(
+				accessToken.getExpiresTime()));
 
 		return accessTokenFragmentResponse(url.toString(), uri);
 	}
@@ -59,8 +61,8 @@ public final class OAuthFragmentResponseFactory {
 	 * @return expireTime the difference time in seconds between
 	 *         <code>expire</code> and <code>now</code> timestamps
 	 */
-	private long getSecondsDeltaToNow(Double accessTokenTime) {
-		return accessTokenTime.longValue() - System.currentTimeMillis() / 1000L;
+	private long getSecondsDeltaToNow(Timestamp accessTokenTime) {
+		return accessTokenTime.getTime() - System.currentTimeMillis() / 1000L;
 	}
 
 	/**
