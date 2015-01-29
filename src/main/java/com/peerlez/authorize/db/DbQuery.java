@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Class to provide utilities to execute stored procedures on an database.
@@ -48,7 +49,7 @@ public final class DbQuery {
 	 */
 	public synchronized ResultSet initializeCallable(String 
 			storedProcedureName, final boolean returnsValue, final 
-			SqlParameters[] parameters) throws SQLException {
+			List<SqlParameters> parameters) throws SQLException {
 
 		StringBuilder constructCallable = new StringBuilder("{");
 		if (returnsValue) {
@@ -57,12 +58,12 @@ public final class DbQuery {
 		
 		constructCallable.append("call ").append(storedProcedureName);
 
-		if (parameters == null || parameters.length == 0) {
+		if (parameters == null || parameters.isEmpty()) {
 			constructCallable.append("() }");
 			return executeCallable(constructCallable.toString(), null);
 		}
 		
-		int length = parameters.length;
+		int length = parameters.size();
 		
 		constructCallable.append(" ( ").append("? ");
 
@@ -90,15 +91,12 @@ public final class DbQuery {
 	 * 				if the stored procedure doesn't exist; or the execution 
 	 * 				failed
 	 */
-	private ResultSet executeCallable(String callable, SqlParameters[] param) 
+	private ResultSet executeCallable(String callable, List<SqlParameters> param) 
 			throws SQLException {
 
-		//TODO fix this!
-//		for(int index = 0; index < param.length; index++) {
-//	         SqlParameters params = param[index];
-//	         Object value = params.getValue();
-//	         statement.setObject(params.getIndex(), params.getValue());
-//	    }
+		for(SqlParameters params : param) {
+	         _callStatement.setObject(params.getIndex(), params.getValue());
+	    }
 		
 		try {
 			_callStatement = constructStatement(callable);
