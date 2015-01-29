@@ -3,6 +3,8 @@ package com.peerlez.authorize;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
@@ -10,12 +12,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.peerlez.authorize.db.DbQuery;
+import com.peerlez.authorize.db.SqlParameters;
+import com.peerlez.authorize.resource.BearerAccessToken;
+import com.peerlez.authorize.resource.JwtAccessToken;
+import com.peerlez.authorize.resource.MacAccessToken;
 
 /**
  * @author A.Sillanpaa
  *
  */
-public class AccessTokenDAO {
+public class AccessTokenDAO implements ValidateAccessToken {
 
 	private static final Logger LOG = LoggerFactory
 		.getLogger(AccessTokenDAO.class);
@@ -93,5 +99,38 @@ public class AccessTokenDAO {
 		LOG.info("{} expired acccess tokens deleted", deletedCount);
 
 		return deletedCount;
+	}
+
+	@Override
+	public BearerAccessToken validateBearerAccessToken(String token) 
+			throws SQLException {
+		List<SqlParameters> params = new ArrayList<SqlParameters>();
+
+		ResultSet result = _query.initializeCallable("oauth.validate_token", 
+				true, params);
+		
+		if (result == null) {
+			return null;
+		}
+		
+		if (!result.next()) {
+			throw new SQLException("token validation failed");
+		}
+
+		while (result.next()) {
+			
+		}
+		//TODO make own method to construct new Class instance from REsultSet
+		return null;
+	}
+
+	@Override
+	public MacAccessToken validateMacAccessToken(String token) throws SQLException {
+		return null;
+	}
+
+	@Override
+	public JwtAccessToken validateJwtAccessToken(String token) throws SQLException {
+		return null;
 	}
 }
