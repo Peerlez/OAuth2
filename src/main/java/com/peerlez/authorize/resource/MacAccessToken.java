@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,33 +24,6 @@ public class MacAccessToken extends AccessToken {
 
 	public final static String MAC_TOKEN = "mac";
 	
-	@XmlAttribute(name = "accessToken")
-	private String _accessToken;
-
-	@XmlAttribute(name = "tokenType")
-	private String _tokenType;
-
-	@XmlAttribute(name = "created")
-	private Timestamp _created;
-
-	@XmlAttribute(name = "expiresTime")
-	private Timestamp _expiresTime;
-
-	@XmlAttribute(name = "clientId")
-	private String _clientId;
-
-	@XmlAttribute(name = "tokenStatus")
-	private String _tokenStatus;
-
-	@XmlAttribute(name = "grantTypeId")
-	private Long _grantTypeId;
-
-	/**
-	 * Constructs an empty MacAccessToken, needed for JAXB.
-	 */
-	public MacAccessToken() {
-	}
-	
 	/**
 	 * Constructs a new MacAccessToken with the given parameters.
 	 *
@@ -68,13 +40,9 @@ public class MacAccessToken extends AccessToken {
 	public MacAccessToken(String accessToken, String tokenType,
 		Timestamp expiresTime, Timestamp created, String clientId,
 		String status, Long grantTypeId, Long customerId) {
-		_accessToken = accessToken;
-		_tokenType = tokenType;
-		_created = created;
-		_clientId = clientId;
-		_tokenStatus = status;
-		_grantTypeId = grantTypeId;
-		_expiresTime = expiresTime;
+
+		super(accessToken, tokenType,expiresTime, created, clientId,
+				status, grantTypeId, customerId);
 	}
 
 	@Override

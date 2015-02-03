@@ -2,42 +2,24 @@ package com.peerlez.authorize.resource;
 
 import java.sql.Timestamp;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
+ * Bearer Access Token Class.
+ * 
  * @author A.Sillanpaa
  *
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = { "accessToken", "tokenType", "expiresTime", "created",
+		"clientId", "tokenStatus", "grantTypeId" })
 public class BearerAccessToken extends AccessToken {
 
 	public final static String BEARER_TOKEN = "bearer";
-
-	@XmlAttribute(name = "accessToken")
-	private String _accessToken;
-
-	@XmlAttribute(name = "tokenType")
-	private String _tokenType;
-
-	@XmlAttribute(name = "created")
-	private Timestamp _created;
-
-	@XmlAttribute(name = "expiresTime")
-	private Timestamp _expiresTime;
-
-	@XmlAttribute(name = "clientId")
-	private String _clientId;
-
-	@XmlAttribute(name = "tokenStatus")
-	private String _tokenStatus;
-
-	@XmlAttribute(name = "grantTypeId")
-	private Long _grantTypeId;
-
-	/**
-	 * Constructs an empty BearerAccessToken, needed for JAXB.
-	 */
-	public BearerAccessToken() {
-	}
 
 	/**
 	 * Constructs a new BearerAccessToken with the given parameters.
@@ -55,12 +37,9 @@ public class BearerAccessToken extends AccessToken {
 	public BearerAccessToken(String accessToken, String tokenType,
 		Timestamp expiresTime, Timestamp created, String clientId,
 		String status, Long grantTypeId, Long customerId) {
-		_accessToken = accessToken;
-		_tokenType = tokenType;
-		_created = created;
-		_clientId = clientId;
-		_tokenStatus = status;
-		_grantTypeId = grantTypeId;
+
+		super(accessToken, tokenType,expiresTime, created, clientId,
+				status, grantTypeId, customerId);
 	}
 
 	@Override
